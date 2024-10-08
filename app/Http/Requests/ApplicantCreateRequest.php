@@ -11,7 +11,7 @@ class ApplicantCreateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class ApplicantCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'fullname'           => ['required','string'],
+            'email'              => ['nullable'],
+            'username'           => ['required'],
+            'password'           => ['nullable'],
+            'cni_number'         => ['nullable'],
+            'attestation_number' => ['nullable'],
+            'phone'              => ['required'],
+            'address_id'         => ['nullable'],
+            'address_number'     => ['nullable'],
+            'address_complement' => ['nullable'],
         ];
     }
 }
