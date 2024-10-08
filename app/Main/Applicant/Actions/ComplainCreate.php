@@ -1,5 +1,5 @@
 <?php
-namespace App\Main\Applicant\ACtions;
+namespace App\Main\Applicant\Actions;
 
 use App\Main\Applicant\Repository\ApplicantRepositoryInterface;
 
