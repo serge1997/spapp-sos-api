@@ -21,5 +21,6 @@ Route::controller(RegionController::class)->group(function () {
 Route::controller(CityController::class)->group(function () {
     Route::prefix('city')->name('city.')->group(function () {
         Route::post('/','onCreate')->name('create');
+        Route::get('/', 'onListALl')->name('listall');
     });
 });

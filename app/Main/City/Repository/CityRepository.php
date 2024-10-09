@@ -10,6 +10,11 @@ class CityRepository implements CityRepositoryInterface
         return City::create($requests);
     }
 
+    public function listAll()
+    {
+        return City::all();
+    }
+
     public function findByName(string $name): ?City
     {
         return City::where("name", $name)->first();
