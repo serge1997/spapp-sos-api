@@ -32,7 +32,9 @@ class RegionRequest extends FormRequest
 
     public function messages(): array
     {
-        return [];
+        return [
+            'name.required' => 'le nom de region est obligatoire'
+        ];
     }
 
     public function name()

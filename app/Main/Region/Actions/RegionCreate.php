@@ -1,6 +1,7 @@
 <?php
 namespace App\Main\Region\Actions;
 
+use App\Http\Resources\RegionResource;
 use App\Main\Region\Exception\RegionException;
 use App\Main\Region\Repository\RegionRepositoryInterface;
 use Illuminate\Foundation\Http\FormRequest;
@@ -14,9 +15,11 @@ class RegionCreate
     public function run(FormRequest $request)
     {
         $region = $this->regionRepository->findByName($request->name());
-        if (!empty($reqgion->name)){
+        if (!empty($region->name)){
             throw new RegionException("La région {$request->name()} exist déja");
         }
-        return Region::create($request);
+        return new RegionResource(
+            $this->regionRepository->create($request->validated())
+        );
     }
 }

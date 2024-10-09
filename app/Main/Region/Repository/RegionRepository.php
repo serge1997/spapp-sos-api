@@ -5,14 +5,19 @@ use App\Models\Region;
 
 class RegionRepository implements RegionRepositoryInterface
 {
-    public function create($request)
+    public function create(array $requests): Region
     {
+        return Region::create($requests);
+    }
 
+    public function listAll()
+    {
+        return Region::all();
     }
 
     public function find(int $id): ?Region
     {
-        return new Region();
+        return Region::findOrFail($id);
     }
 
     public function findByName(string $name): ?Region
