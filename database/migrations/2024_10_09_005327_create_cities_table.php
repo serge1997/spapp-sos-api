@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('population')->nullable();
             $table->string('district')->nullable();
             $table->integer('region_id')->unsigned();
+            $table->enum('origin', ["Agent spapp", "Delivery spapp", "Owner spapp"]);
             $table->foreign('region_id')->references('id')
                 ->on('regions')->onDelete('cascade');
             $table->timestamps();

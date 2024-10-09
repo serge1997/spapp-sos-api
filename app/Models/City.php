@@ -18,7 +18,8 @@ class City extends Model
         'region_id',
         'longitude',
         'latitude',
-        'population'
+        'population',
+        'origin'
     ];
 
     public function region() : BelongsTo
