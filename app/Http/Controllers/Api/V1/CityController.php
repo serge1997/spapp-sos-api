@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CityRequest;
 use App\Main\City\Actions\CityCreate;
 use App\Main\City\Actions\CityList;
-use App\Traits\traits\HttpResponse;
+use App\Traits\HttpResponse;
 use Illuminate\Http\Request;
 use Psr\Container\ContainerInterface;
 

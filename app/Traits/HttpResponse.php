@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits\traits;
+namespace App\Traits;
 
 trait HttpResponse
 {
