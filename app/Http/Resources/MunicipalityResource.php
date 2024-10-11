@@ -18,11 +18,9 @@ class MunicipalityResource extends JsonResource
             "id"         => $this->id,
             "name"       => $this->name,
             "city_id"    => $this->city_id,
-            "city"       => $this->city,
-            "created_at" => $this->created_at,
-            "updated_at" => $this->updated_at,
             "longitude"  => $this->longitude,
-            "latitude"   => $this->latitude
+            "latitude"   => $this->latitude,
+            "population" => $this->population
         ];
     }
 }

@@ -9,16 +9,16 @@ class MunicipalityRepository implements MunicipalityRepositoryInterface
 {
     public function create(array $requests) : Municipality
     {
-        return new Municipality($requests);
+        return Municipality::create($requests);
     }
 
     public function listAll()
     {
         return Municipality::all();
     }
-    public function find(int $id) : Municipality
+    public function find(int $id) : ?Municipality
     {
-        throw new MunicipalityExcpetion("Method not implemented");
+        return Municipality::find($id);
     }
 
     public function findByName(string $name) : Municipality

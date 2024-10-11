@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('municipalities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('latitude')->nullable();
-            $table->string('longitude')->nullable();
+            $table->integer('city_id')->unsigned();
             $table->bigInteger('population')->nullable();
-            $table->string('district')->nullable();
-            $table->integer('region_id')->unsigned();
+            $table->double('latitude')->nullable();
+            $table->double('longitude')->nullable();
             $table->enum('origin', ["Agent spapp", "Delivery spapp", "Owner spapp"]);
-            $table->foreign('region_id')->references('id')
-                ->on('regions')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')
+                ->on('cities')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('municipalities');
     }
 };

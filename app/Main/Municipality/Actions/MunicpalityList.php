@@ -3,6 +3,7 @@ namespace App\Main\Municipality\Actions;
 
 use App\Http\Resources\MunicipalityResource;
 use App\Main\Municipality\Repository\MunicipalityRepositoryInterface;
+use App\Main\Municpality\Exception\MunicipalityExcpetion;
 
 class MunicipalityList
 {
@@ -20,8 +21,12 @@ class MunicipalityList
 
     public function find(int $id)
     {
-        return new MunicipalityResource(
-            $this->municipalityRepository->find($id)
-        );
+        $municpality = $this->municipalityRepository->find($id);
+        if (!empty($municpality)){
+            return new MunicipalityResource(
+                $municpality
+            );
+        }
+        throw new MunicipalityExcpetion("l'identificateur introuvale");
     }
 }
