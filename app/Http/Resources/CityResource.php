@@ -20,8 +20,6 @@ class CityResource extends JsonResource
             "population" => $this->population,
             "region_id"  => $this->region_id,
             "district"   => $this->district,
-            "created_at" => $this->created_at,
-            "updated_at" => $this->updated_at,
             "longitude"  => $this->longitude,
             "latitude"   => $this->latitude
         ];

@@ -2,7 +2,7 @@
 namespace App\Main\Municipality\Actions;
 
 use App\Main\Municipality\Repository\MunicipalityRepositoryInterface;
-use App\Main\Municpality\Exception\MunicipalityExcpetion;
+use App\Main\Municpality\Exception\MunicipalityException;
 use Illuminate\Foundation\Http\FormRequest;
 
 class MunicipalityCreate
@@ -18,6 +18,6 @@ class MunicipalityCreate
         if (empty($municipality->id)){
             return $this->municipalityRepository->create($request->validated());
         }
-        throw new MunicipalityExcpetion("La commune {$request->name()} existe dejá");
+        throw new MunicipalityException("La commune {$request->name()} existe dejá");
     }
 }

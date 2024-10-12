@@ -12,7 +12,7 @@ class NeighbourhoodRepository implements NeighbourhoodRepositoryInterface
 
     public function listAll()
     {
-
+        return Neighbourhood::all();
     }
 
     public function findByName(string $name) : ?Neighbourhood
@@ -22,5 +22,11 @@ class NeighbourhoodRepository implements NeighbourhoodRepositoryInterface
     public function find(int $id)
     {
         return Neighbourhood::where("id", $id)->first();
+    }
+
+    public function findByNameAndMunicipality(string $name, int $municipality) : ?Neighbourhood
+    {
+        return Neighbourhood::where([["name", $name], ["muncipality_id", $municipality]])
+            ->first();
     }
 }

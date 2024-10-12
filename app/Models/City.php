@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class City extends Model
 {
@@ -39,5 +40,10 @@ class City extends Model
         return Attribute::make(
             get: fn($value) => $value != null ? date('d/m/Y H:i:s', strtotime($value)) : null
         );
+    }
+
+    public function neighborhoods() : BelongsToMany
+    {
+        return $this->belongsToMany(Neighbourhood::class, 'municipalities', 'city_id', 'municipality_id');
     }
 }

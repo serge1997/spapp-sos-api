@@ -28,7 +28,7 @@ class MunicipalityController extends Controller
             $request->validated();
             $message = "La commune enregistré avec succes";
             $municpalityCreate = $this->container->get(MunicipalityCreate::class);
-            $municipality = $municpalityCreate->create($request);
+            $municipality = $municpalityCreate->run($request);
             return response()
                 ->json($this->successResponse($message, $municipality));
         }catch(Exception $e){
@@ -46,6 +46,21 @@ class MunicipalityController extends Controller
             $municipalities = $municpalityList->listAll();
             return response()
                 ->json($this->successResponse($message, $municipalities));
+        }catch(Exception $e){
+            return response()
+                ->json($this->errorResponse("ERROR: {$e->getMessage()}"), 500);
+        }
+    }
+
+    public function onFind(int $id)
+    {
+        try{
+            /** @var MuncipalityList $municpalityList */
+            $message = "Liste d'une commune";
+            $municpalityList = $this->container->get(MunicipalityList::class);
+            $municipality = $municpalityList->find($id);
+            return response()
+                ->json($this->successResponse($message, $municipality));
         }catch(Exception $e){
             return response()
                 ->json($this->errorResponse("ERROR: {$e->getMessage()}"), 500);

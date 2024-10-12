@@ -1,7 +1,7 @@
 <?php
 namespace App\Main\Municpality\Exception;
 
-class MunicipalityExcpetion extends \Exception
+class MunicipalityException extends \Exception
 {
     public function __construct($message = "", $code = 0)
     {

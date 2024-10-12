@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Neighbourhood extends Model
 {
@@ -21,8 +23,25 @@ class Neighbourhood extends Model
         'origin'
     ];
 
-    public function city() : HasOneThrough
+    public function municipality() : BelongsTo
     {
-        return $this->hasOneThrough(Municipality::class, City::class);
+        return $this->belongsTo(Municipality::class);
+    }
+    public function city() : BelongsTo
+    {
+        return $this->municipality->city();
+    }
+
+    public function createdAt() : Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => date('d/m/Y H:i:s', strtotime($value))
+        );
+    }
+    public function updatedAt() : Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $value != null ? date('d/m/Y H:i:s', strtotime($value)) : null
+        );
     }
 }
