@@ -11,6 +11,8 @@ use App\Main\Neighbourhood\Actions\NeighbourhoodCreate;
 use App\Main\Neighbourhood\Actions\NeighbourhoodList;
 use App\Main\Region\Actions\RegionCreate;
 use App\Main\Region\Actions\RegionList;
+use App\Main\Sector\Actions\SectorCreate;
+use App\Main\Sector\Actions\SectorList;
 use Illuminate\Support\ServiceProvider;
 
 class ActionsServiceContainerProvider extends ServiceProvider
@@ -29,6 +31,8 @@ class ActionsServiceContainerProvider extends ServiceProvider
         $this->app->bind(MunicipalityList::class, MunicipalityList::class);
         $this->app->bind(NeighbourhoodCreate::class, NeighbourhoodCreate::class);
         $this->app->bind(NeighbourhoodList::class, NeighbourhoodList::class);
+        $this->app->bind(SectorCreate::class, SectorCreate::class);
+        $this->app->bind(SectorList::class, SectorList::class);
     }
 
     /**

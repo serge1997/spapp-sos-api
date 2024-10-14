@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Neighbourhood extends Model
 {
@@ -30,6 +31,11 @@ class Neighbourhood extends Model
     public function city() : BelongsTo
     {
         return $this->municipality->city();
+    }
+
+    public function sectors() : HasMany
+    {
+        return $this->hasMany(Sector::class);
     }
 
     public function createdAt() : Attribute

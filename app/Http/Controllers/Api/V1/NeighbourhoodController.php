@@ -51,4 +51,20 @@ class NeighbourhoodController extends Controller
             ->json($this->errorResponse("ERROR: {$e->getMessage()}"), 500);
         }
     }
+
+    public function show(int $id)
+    {
+        try{
+
+            $message = "les données d'un quartier";
+            /** @var NeighbourhoodList $neighbourhoodList */
+            $neighbourhoodList = $this->container->get(NeighbourhoodList::class);
+            $neighbourhood = $neighbourhoodList->find($id);
+            return response()
+                ->json($this->successResponse($message, $neighbourhood));
+        }catch(Exception $e){
+            return response()
+            ->json($this->errorResponse("ERROR: {$e->getMessage()}"), 500);
+        }
+    }
 }

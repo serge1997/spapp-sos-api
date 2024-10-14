@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class NeighbourhoodResource extends JsonResource
+class FindNeighbourhoodResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,8 +17,8 @@ class NeighbourhoodResource extends JsonResource
         return [
             "id"=> $this->id,
             "name" => sprintf("%s - %s", $this->name, $this->municipality->name),
-            "municpality_id" => $this->municipality_id,
-            "city_id" => $this->municipality->city->id
+            "municpality" => new MunicipalityResource($this->municipality),
+            "city" => new CityResource($this->municipality->city)
         ];
     }
 }

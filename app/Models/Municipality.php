@@ -33,6 +33,11 @@ class Municipality extends Model
         return $this->hasMany(Neighbourhood::class);
     }
 
+    public function sectors() : HasMany
+    {
+        return $this->hasMany(Sector::class);
+    }
+
     public function createdAt() : Attribute
     {
         return Attribute::make(

@@ -39,5 +39,6 @@ Route::controller(NeighbourhoodController::class)->group(function () {
     Route::prefix('neighbourhood')->name('neighbourhood.')->group(function () {
         Route::post('/','onCreate')->name('create');
         Route::get('/', 'onListAll')->name('onListAll');
+        Route::get('/{id}', 'show')->name('show');
     });
 });

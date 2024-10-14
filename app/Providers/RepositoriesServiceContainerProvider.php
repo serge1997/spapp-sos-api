@@ -12,6 +12,8 @@ use App\Main\Neighbourhood\Repository\NeighbourhoodRepositoryInterface;
 use App\Main\Neighbourhood\Repository\NeighbourhoodRepository;
 use App\Main\Region\Repository\RegionRepository;
 use App\Main\Region\Repository\RegionRepositoryInterface;
+use App\Main\Sector\Repository\SectorRepositoryInterface;
+use App\Main\Sector\Repository\SectorRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoriesServiceContainerProvider extends ServiceProvider
@@ -26,6 +28,7 @@ class RepositoriesServiceContainerProvider extends ServiceProvider
         $this->app->bind(CityRepositoryInterface::class, CityRepository::class);
         $this->app->bind(MunicipalityRepositoryInterface::class, MunicipalityRepository::class);
         $this->app->bind(NeighbourhoodRepositoryInterface::class, NeighbourhoodRepository::class);
+        $this->app->bind(SectorRepositoryInterface::class, SectorRepository::class);
     }
 
     /**

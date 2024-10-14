@@ -19,9 +19,9 @@ class NeighbourhoodRepository implements NeighbourhoodRepositoryInterface
     {
         return Neighbourhood::where("name", $name)->first();
     }
-    public function find(int $id)
+    public function find(int $id) : ?Neighbourhood
     {
-        return Neighbourhood::where("id", $id)->first();
+        return Neighbourhood::find($id);
     }
 
     public function findByNameAndMunicipality(string $name, int $municipality) : ?Neighbourhood
