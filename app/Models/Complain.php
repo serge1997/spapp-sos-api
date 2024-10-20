@@ -16,6 +16,7 @@ class Complain extends Model
         'applicant_id',
         'address_id',
         'address_number',
-        'address_complement'
+        'address_complement',
+        'complain_type_id'
     ];
 }

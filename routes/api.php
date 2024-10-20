@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\V1\CityController;
 use App\Http\Controllers\Api\V1\MunicipalityController;
 use App\Http\Controllers\Api\V1\NeighbourhoodController;
 use App\Http\Controllers\Api\V1\RegionController;
+use App\Http\Controllers\Api\V1\SectorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Psr\Container\ContainerInterface;
@@ -40,5 +41,13 @@ Route::controller(NeighbourhoodController::class)->group(function () {
         Route::post('/','onCreate')->name('create');
         Route::get('/', 'onListAll')->name('onListAll');
         Route::get('/{id}', 'show')->name('show');
+    });
+});
+
+Route::controller(SectorController::class)->group(function () {
+    Route::prefix('sector')->name('sector.')->group(function () {
+        Route::post('/', 'store')->name('store');
+        Route::get('/{id}', 'show')->name('show');
+        Route::get('/by-municipality/{id}', 'listByMunicpality')->name('sector.by.municpality');
     });
 });
