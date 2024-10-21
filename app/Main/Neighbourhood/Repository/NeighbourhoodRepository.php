@@ -26,7 +26,7 @@ class NeighbourhoodRepository implements NeighbourhoodRepositoryInterface
 
     public function findByNameAndMunicipality(string $name, int $municipality) : ?Neighbourhood
     {
-        return Neighbourhood::where([["name", $name], ["muncipality_id", $municipality]])
+        return Neighbourhood::where([["name", $name], ["municipality_id", $municipality]])
             ->first();
     }
 }

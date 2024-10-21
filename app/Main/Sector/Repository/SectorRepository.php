@@ -13,7 +13,7 @@ class SectorRepository implements SectorRepositoryInterface
 
     public function listAllByMunicipality(Municipality $municipality)
     {
-        return Sector::where('municpality_id', $municipality->id);
+        return Sector::where('municipality_id', $municipality->id)->get();
     }
     public function find(int $id) : Sector
     {

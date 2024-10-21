@@ -16,12 +16,12 @@ class SectorList
         private MunicipalityRepositoryInterface $municipalityRepository
     ){}
 
-    public function findAllByMunicpality($request)
+    public function findAllByMunicpality($municipality_id)
     {
-        if (!$request->filled('municipality_id')){
+        if (!$municipality_id){
             throw new SectorException("Commune obligatoire pour lister les secteurs");
         }
-        $municipality = $this->municipalityRepository->find($request->municipality_id);
+        $municipality = $this->municipalityRepository->find($municipality_id);
         if (empty($municipality)){
             throw new MunicipalityException("l'identificateur de la commune est obligatoire");
         }

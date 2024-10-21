@@ -21,7 +21,7 @@ class MunicipalityController extends Controller
     ){}
 
 
-    public function onCreate(MunicipalityRequest $request)
+    public function store(MunicipalityRequest $request)
     {
         try{
             /** @var MuncipalityCreate $municpalityCreate */
@@ -37,7 +37,7 @@ class MunicipalityController extends Controller
         }
     }
 
-    public function onListAll()
+    public function index()
     {
         try{
             /** @var MuncipalityList $municpalityList */
@@ -52,7 +52,7 @@ class MunicipalityController extends Controller
         }
     }
 
-    public function onFind(int $id)
+    public function show(int $id)
     {
         try{
             /** @var MuncipalityList $municpalityList */

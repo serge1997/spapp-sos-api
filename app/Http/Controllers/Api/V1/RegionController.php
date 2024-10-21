@@ -14,7 +14,7 @@ class RegionController extends Controller
     public function __construct(private ContainerInterface $container)
     {}
 
-    public function onCreate(RegionRequest $request)
+    public function store(RegionRequest $request)
     {
         try{
             /** @var RegionCreate $region */
@@ -33,7 +33,7 @@ class RegionController extends Controller
         }
     }
 
-    public function onListAll()
+    public function index()
     {
         try{
             /** @var RegionList $region */
@@ -52,7 +52,7 @@ class RegionController extends Controller
         }
     }
 
-    public function onFind(int $id)
+    public function show(int $id)
     {
         try{
             /** @var RegionList $region */

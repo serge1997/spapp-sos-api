@@ -20,7 +20,7 @@ class NeighbourhoodController extends Controller
     )
     {}
 
-    public function onCreate(NeighbourhoodRequest $request)
+    public function store(NeighbourhoodRequest $request)
     {
         try{
             $request->validated();
@@ -37,7 +37,7 @@ class NeighbourhoodController extends Controller
         }
     }
 
-    public function onListAll()
+    public function index()
     {
         try{
             $message = "List de tous les quartiers";

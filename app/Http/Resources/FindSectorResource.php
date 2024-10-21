@@ -19,7 +19,7 @@ class FindSectorResource extends JsonResource
             "id"=> $this->id,
             "name" => $this->name,
             "municipality" => new MunicipalityResource($this->municipality),
-            "neighbourhood" => new Neighbourhood($this->neighbourhood),
+            "neighbourhood" => new NeighbourhoodResource($this->neighbourhood),
             "city" => new CityResource($this->municipality->city)
         ];;
     }

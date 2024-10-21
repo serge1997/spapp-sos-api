@@ -15,39 +15,41 @@ use Psr\Container\ContainerInterface;
 
 Route::controller(RegionController::class)->group(function () {
     Route::prefix('region')->name('region.')->group(function () {
-        Route::post('/', 'onCreate')->name('create');
-        Route::get('/', 'onListAll')->name('listall');
-        Route::get('/{id}', 'onFind')->name('find');
+        Route::post('/', 'store')->name('store');
+        Route::get('/', 'index')->name('index');
+        Route::get('/{id}', 'show')->name('show');
     });
 });
 
 Route::controller(CityController::class)->group(function () {
     Route::prefix('city')->name('city.')->group(function () {
-        Route::post('/','onCreate')->name('create');
-        Route::get('/', 'onListALl')->name('listall');
+        Route::post('/','store')->name('store');
+        Route::get('/', 'index')->name('index');
+        Route::get('/{id}', 'show')->name('show');
     });
 });
 
 Route::controller(MunicipalityController::class)->group(function(){
     Route::prefix('municipality')->name('municipality.')->group(function() {
-        Route::post('/','onCreate')->name('create');
-        Route::get('/{id}', 'onFind')->name('find');
-        Route::get('/', 'onListAll')->name('listall');
+        Route::post('/','store')->name('store');
+        Route::get('/{id}', 'show')->name('show');
+        Route::get('/', 'index')->name('index');
     });
 });
 
 Route::controller(NeighbourhoodController::class)->group(function () {
     Route::prefix('neighbourhood')->name('neighbourhood.')->group(function () {
-        Route::post('/','onCreate')->name('create');
-        Route::get('/', 'onListAll')->name('onListAll');
+        Route::post('/','store')->name('store');
+        Route::get('/', 'index')->name('index');
         Route::get('/{id}', 'show')->name('show');
     });
 });
 
 Route::controller(SectorController::class)->group(function () {
     Route::prefix('sector')->name('sector.')->group(function () {
+        Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
         Route::get('/{id}', 'show')->name('show');
-        Route::get('/by-municipality/{id}', 'listByMunicpality')->name('sector.by.municpality');
+        Route::get('/by-municipality/{municipality_id}', 'listByMunicpality')->name('sector.by.municpality');
     });
 });

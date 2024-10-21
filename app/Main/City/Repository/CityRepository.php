@@ -19,4 +19,8 @@ class CityRepository implements CityRepositoryInterface
     {
         return City::where("name", $name)->first();
     }
+    public function find(int $id): City
+    {
+        return City::find($id);
+    }
 }

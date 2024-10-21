@@ -18,12 +18,12 @@ class SectorController extends Controller
     )
     {}
 
-    public function listByMunicpality(Request $request)
+    public function listByMunicpality($municipality_id)
     {
        try{
             /** @var SectorList $sectorList */
             $sectorList = $this->container->get(SectorList::class);
-            $sectors = $sectorList->findAllByMunicpality($request);
+            $sectors = $sectorList->findAllByMunicpality($municipality_id);
             $message = "list de tous les secteurs d'une comune";
             return response()
                 ->json($this->successResponse($message,$sectors));

@@ -46,7 +46,7 @@ class NeighbourhoodRequest extends FormRequest
     {
         return $this->name;
     }
-    public function municpalityId() : ?int
+    public function municipalityId() : ?int
     {
         return $this->municipality_id;
     }

@@ -19,7 +19,7 @@ class CityController extends Controller
     )
     {}
 
-    public function onCreate(CityRequest $request)
+    public function store(CityRequest $request)
     {
         try{
             /** @var CityCreate $city */
@@ -35,7 +35,7 @@ class CityController extends Controller
         }
     }
 
-    public function onListALl()
+    public function index()
     {
         try{
             /** @var CityList $city */
@@ -44,6 +44,20 @@ class CityController extends Controller
             $message = "List de toutes les villes";
             return response()
                 ->json($this->successResponse($message, $data));
+        }catch(\Exception $e){
+            return response()
+                ->json($this->errorResponse("ERROR: {$e->getMessage()}"), 500);
+        }
+    }
+
+    public function show(int $id)
+    {
+        try{
+            /** @var CityList $cityList */
+            $cityList = $this->container->get(CityList::class);
+            $city = $cityList->findById($id);
+            return response()
+                ->json($this->successResponse("donnée d'une ville", $city));
         }catch(\Exception $e){
             return response()
                 ->json($this->errorResponse("ERROR: {$e->getMessage()}"), 500);

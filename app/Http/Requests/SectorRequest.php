@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Enums\Enums\CountryLocalInfoOriginEnum;
 
 class SectorRequest extends FormRequest
 {
@@ -23,8 +25,9 @@ class SectorRequest extends FormRequest
     {
         return [
             "name" => ['required', 'string'],
-            "muncipality_id" => ['required', 'integer'],
-            "city_id" => ["required", "integer"],
+            "municipality_id" => ['required', 'integer'],
+            "neighbourhood_id" => ["required", "integer"],
+            'origin'          => [Rule::enum(CountryLocalInfoOriginEnum::class)]
         ];
     }
 }
