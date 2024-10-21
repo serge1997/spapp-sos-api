@@ -31,6 +31,8 @@ class AddressRequest extends FormRequest
             'neighbourhood' => ['required'],
             'sector_id'        => ['nullable'],
             'zip_code'         => ['nullable'],
+            'longitude' => ['nullable'],
+            'latitude' => ['nullable'],
             'origin'        => [Rule::enum(CountryLocalInfoOriginEnum::class)]
         ];
     }

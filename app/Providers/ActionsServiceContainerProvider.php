@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Main\Address\Actions\AddressCreate;
 use App\Main\Applicant\Actions\ComplainCreate;
 use App\Main\City\Actions\CityCreate;
 use App\Main\City\Actions\CityList;
@@ -33,6 +34,7 @@ class ActionsServiceContainerProvider extends ServiceProvider
         $this->app->bind(NeighbourhoodList::class, NeighbourhoodList::class);
         $this->app->bind(SectorCreate::class, SectorCreate::class);
         $this->app->bind(SectorList::class, SectorList::class);
+        $this->app->bind(AddressCreate::class, AddressCreate::class);
     }
 
     /**

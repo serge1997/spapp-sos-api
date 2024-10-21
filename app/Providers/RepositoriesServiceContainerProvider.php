@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Main\Address\Repository\AddressRepository;
+use App\Main\Address\Repository\AddressRepositoryInterface;
 use App\Main\Applicant\Repository\ApplicantRepository;
 use App\Main\Applicant\Repository\ApplicantRepositoryInterface;
 use App\Main\City\Repository\CityRepositoryInterface;
@@ -29,6 +31,7 @@ class RepositoriesServiceContainerProvider extends ServiceProvider
         $this->app->bind(MunicipalityRepositoryInterface::class, MunicipalityRepository::class);
         $this->app->bind(NeighbourhoodRepositoryInterface::class, NeighbourhoodRepository::class);
         $this->app->bind(SectorRepositoryInterface::class, SectorRepository::class);
+        $this->app->bind(AddressRepositoryInterface::class, AddressRepository::class);
     }
 
     /**

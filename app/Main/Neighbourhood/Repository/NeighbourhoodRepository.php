@@ -37,7 +37,10 @@ class NeighbourhoodRepository implements NeighbourhoodRepositoryInterface
             $neighbourhood = new Neighbourhood();
             $neighbourhood->name = $request->neighbourhood;
             $neighbourhood->municipality_id = $municipality->id;
+            $neighbourhood->latitude = $request->latitude;
+            $neighbourhood->longitude = $request->longitude;
             $neighbourhood->origin = $request->origin;
+            $neighbourhood->save();
             return $neighbourhood;
         }
         return $find;
