@@ -1,6 +1,7 @@
 <?php
 namespace App\Main\Address\Actions;
 
+use App\Main\Address\Exception\AddressException;
 use App\Main\Address\Repository\AddressRepositoryInterface;
 use App\Main\City\Repository\CityRepositoryInterface;
 use App\Main\Municipality\Repository\MunicipalityRepositoryInterface;
@@ -22,9 +23,14 @@ class AddressCreate
 
     public function run(FormRequest $request)
     {
+        if (!$request->filled("street_name") && !$request->filled('sector')){
+            throw new AddressException("informez le nom de la rue ou du secteur");
+        }
         $city = $this->cityRepository->findOrCreate($request);
         $municipality = $this->municipalityRepository->findOrCreate($request, $city);
         $neighbourhood = $this->neighbourhoodRepository->findOrCreate($request, $municipality);
-        $sector = $this->sectorRepository->findOrCreate($request, $neighbourhood, $municipality);
+        if ($request->filled('sector')){
+            $sector = $this->sectorRepository->findOrCreate($request, $neighbourhood, $municipality);
+        }
     }
 }
