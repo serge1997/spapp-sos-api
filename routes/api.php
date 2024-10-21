@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\AddressController;
 use App\Http\Controllers\Api\V1\CityController;
 use App\Http\Controllers\Api\V1\MunicipalityController;
 use App\Http\Controllers\Api\V1\NeighbourhoodController;
@@ -51,5 +52,10 @@ Route::controller(SectorController::class)->group(function () {
         Route::post('/', 'store')->name('store');
         Route::get('/{id}', 'show')->name('show');
         Route::get('/by-municipality/{municipality_id}', 'listByMunicpality')->name('sector.by.municpality');
+    });
+});
+Route::controller(AddressController::class)->group(function(){
+    Route::prefix('v1/address')->name('address.')->group(function () {
+        Route::post('/', 'store')->name('store');
     });
 });

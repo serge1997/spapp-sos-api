@@ -2,6 +2,7 @@
 namespace App\Main\Neighbourhood\Repository;
 
 use App\Models\Neighbourhood;
+use App\Models\Municipality;
 
 class NeighbourhoodRepository implements NeighbourhoodRepositoryInterface
 {
@@ -28,5 +29,17 @@ class NeighbourhoodRepository implements NeighbourhoodRepositoryInterface
     {
         return Neighbourhood::where([["name", $name], ["municipality_id", $municipality]])
             ->first();
+    }
+    public function findOrCreate($request, Municipality $municipality)
+    {
+        $find = $this->findByNameAndMunicipality($request->neighbourhood, $municipality->id);
+        if (empty($find)){
+            $neighbourhood = new Neighbourhood();
+            $neighbourhood->name = $request->neighbourhood;
+            $neighbourhood->municipality_id = $municipality->id;
+            $neighbourhood->origin = $request->origin;
+            return $neighbourhood;
+        }
+        return $find;
     }
 }

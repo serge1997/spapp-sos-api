@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('longitude')->nullable();
             $table->bigInteger('population')->nullable();
             $table->string('district')->nullable();
-            $table->integer('region_id')->unsigned();
+            $table->integer('region_id')->unsigned()->nullable();
             $table->enum('origin', ["Agent spapp", "Delivery spapp", "Owner spapp"]);
             $table->foreign('region_id')->references('id')
                 ->on('regions')->onDelete('cascade');

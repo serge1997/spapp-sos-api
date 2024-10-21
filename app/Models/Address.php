@@ -16,6 +16,7 @@ class Address extends Model
         'city_id',
         'municipality_id',
         'neighbourhood_id',
-        'sector_id'
+        'sector_id',
+        'zip_code'
     ];
 }

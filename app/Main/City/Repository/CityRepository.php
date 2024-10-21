@@ -23,4 +23,16 @@ class CityRepository implements CityRepositoryInterface
     {
         return City::find($id);
     }
+    public function findOrCreate($request)
+    {
+        $cityFinded = $this->findByName($request->city);
+        if (empty($cityFinded)){
+            $city = new City();
+            $city->name = $request->name;
+            $city->origin = $request->origin;
+            $city->save();
+            return $city;
+        }
+        return $cityFinded;
+    }
 }
