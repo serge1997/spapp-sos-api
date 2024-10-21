@@ -27,7 +27,8 @@ class SectorRequest extends FormRequest
             "name" => ['required', 'string'],
             "municipality_id" => ['required', 'integer'],
             "neighbourhood_id" => ["required", "integer"],
-            'origin'          => [Rule::enum(CountryLocalInfoOriginEnum::class)]
+           'longitude' => ['nullable'],
+           'latitude' => ['nullable']
         ];
     }
 }

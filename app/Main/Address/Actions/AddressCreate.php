@@ -5,6 +5,7 @@ use App\Main\Address\Repository\AddressRepositoryInterface;
 use App\Main\City\Repository\CityRepositoryInterface;
 use App\Main\Municipality\Repository\MunicipalityRepositoryInterface;
 use App\Main\Neighbourhood\Repository\NeighbourhoodRepositoryInterface;
+use App\Main\Sector\Repository\SectorRepositoryInterface;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AddressCreate
@@ -13,7 +14,8 @@ class AddressCreate
         private AddressRepositoryInterface $addressRepository,
         private CityRepositoryInterface $cityRepository,
         private MunicipalityRepositoryInterface $municipalityRepository,
-        private NeighbourhoodRepositoryInterface $neighbourhoodRepository
+        private NeighbourhoodRepositoryInterface $neighbourhoodRepository,
+        private SectorRepositoryInterface $sectorRepository
     )
     {}
 
@@ -23,5 +25,6 @@ class AddressCreate
         $city = $this->cityRepository->findOrCreate($request);
         $municipality = $this->municipalityRepository->findOrCreate($request, $city);
         $neighbourhood = $this->neighbourhoodRepository->findOrCreate($request, $municipality);
+        $sector = $this->sectorRepository->findOrCreate($request, $neighbourhood, $municipality);
     }
 }

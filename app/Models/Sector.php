@@ -16,7 +16,9 @@ class Sector extends Model
         'name',
         'municipality_id',
         'neighbourhood_id',
-        'is_risked'
+        'is_risked',
+        'latitude',
+        'longitude'
     ];
 
     public function municipality() : BelongsTo
